@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/paths";
 import Base from "../layouts/Base.astro";
 ---
 
@@ -66,8 +67,8 @@ import Base from "../layouts/Base.astro";
     </div>
 
     <p class="page-cta">
-      <a class="cut" href="/lista">Anótate a la lista</a>
-      <a class="mono glosa-link" href="/glosa">Glosa</a>
+      <a class="cut" href={withBase("/lista")}>Anótate a la lista</a>
+      <a class="mono glosa-link" href={withBase("/glosa")}>Glosa</a>
     </p>
   </article>
 </Base>

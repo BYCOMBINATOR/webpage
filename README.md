@@ -18,7 +18,7 @@ npm install
 npm run dev
 ```
 
-Abre [http://localhost:4173/](http://localhost:4173/). Astro 7, adapter Node standalone.
+Abre [http://localhost:4173/](http://localhost:4173/). Astro 7, sitio estático.
 
 | Comando | Qué hace |
 |---------|----------|
@@ -57,7 +57,7 @@ La portada no carga el kit. El cubo firma. Las señales adornan. Diario: **BYC**
 - Voseo argentino (`traé`, `anotate`, `probá`, `acá`).
 - Placas `byc-sombra` / `byc-sal` en header o footer: esos archivos traen fondo. En vivo: `byc-neg.svg` sobre sombra, `byc.svg` sobre sal.
 - Estirar, rotar o pintar el cubo. Pegarle Bolivia, batch o `.bo`. Frankenlogo.
-- La lista de espera en git. `data/waitlist.json` no se commitea.
+- La lista de espera en git. En el sitio público llega al correo de contacto; no hay `waitlist.json` en el repo.
 
 Si una palabra suena rara, va a `/glosa`. Si es marca, va a `/comunica/`. Si es para quien busca una silla, va a `/`, `/mesa`, `/para-quien`, `/batch` o `/lista`.
 
@@ -67,8 +67,8 @@ Si una palabra suena rara, va a `/glosa`. Si es marca, va a `/comunica/`. Si es 
 2. Fork y rama desde `main`.
 3. `npm run dev`. Mirá la página que tocás y las que comparten header, footer o estado.
 4. Un trabajo por PR. Español de Bolivia. El cubo no se disfraza.
-5. No subas `.env`, credenciales ni `data/waitlist.json`.
-6. Pedí review. Julio mergea a `main`; GitHub Actions despliega.
+5. No subas `.env` ni credenciales.
+6. Pedí review. Julio mergea a `main`; GitHub Actions publica en [GitHub Pages](https://bycombinator.github.io/webpage/).
 
 ### Checklist
 
@@ -76,6 +76,12 @@ Si una palabra suena rara, va a `/glosa`. Si es marca, va a `/comunica/`. Si es 
 - [ ] Sal y Sombra: el texto de los botones contrasta; el lockup no arrastra placa.
 - [ ] Si agregaste una palabra de la mesa, está en la glosa.
 - [ ] Si tocaste marca, el cambio vive en `/comunica/`, no esparcido.
+
+## Publicar
+
+Push a `main`. Actions construye y publica en [https://bycombinator.github.io/webpage/](https://bycombinator.github.io/webpage/).
+
+GitHub Pages no corre servidor: la lista de espera llega a este correo. La primera vez FormSubmit pide confirmar el buzón.
 
 ## Contacto
 

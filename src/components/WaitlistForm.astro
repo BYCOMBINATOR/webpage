@@ -1,13 +1,25 @@
 ---
+import { withBase } from "../lib/paths";
+
 interface Props {
   compact?: boolean;
 }
 const { compact = false } = Astro.props;
+const thanks = new URL(withBase("/gracias"), Astro.url.origin).href;
 ---
 
-<form class="form" id="waitlist" method="POST" action="/api/waitlist">
+<form
+  class="form"
+  id="waitlist"
+  method="POST"
+  action="https://formsubmit.co/juliocesarsevericheorellana@gmail.com"
+>
+  <input type="hidden" name="_next" value={thanks} />
+  <input type="hidden" name="_subject" value="BYC — lista de espera" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
   <p class="hp" aria-hidden="true">
-    <label>Company <input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+    <label>Company <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
   </p>
   <label>
     Correo
@@ -36,43 +48,4 @@ const { compact = false } = Astro.props;
     </select>
   </label>
   <button class="cut" type="submit">Avísame cuando abra la mesa</button>
-  <p class="form-msg" data-msg></p>
 </form>
-
-<script>
-  const form = document.getElementById("waitlist");
-  const msg = form?.querySelector("[data-msg]");
-  form?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    if (!(form instanceof HTMLFormElement)) return;
-    const body = new FormData(form);
-    const button = form.querySelector("button");
-    if (button) button.setAttribute("disabled", "true");
-    if (msg) msg.textContent = "";
-    try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        body,
-        headers: { Accept: "application/json" },
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        if (msg) {
-          msg.classList.remove("ok");
-          msg.textContent =
-            data.message || "No se pudo anotar. Prueba de nuevo.";
-        }
-        return;
-      }
-      window.location.href = "/gracias";
-      return;
-    } catch {
-      if (msg) {
-        msg.classList.remove("ok");
-        msg.textContent = "No se pudo anotar. Prueba de nuevo.";
-      }
-    } finally {
-      if (button) button.removeAttribute("disabled");
-    }
-  });
-</script>

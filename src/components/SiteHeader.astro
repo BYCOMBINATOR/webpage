@@ -1,20 +1,20 @@
 ---
+import { pagePath, withBase } from "../lib/paths";
 import BrandMark from "./BrandMark.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
-const raw = Astro.url.pathname;
-const path = raw.length > 1 && raw.endsWith("/") ? raw.slice(0, -1) : raw;
+const path = pagePath(Astro.url.pathname);
 
 const links = [
-  { href: "/mesa", label: "Mesa" },
-  { href: "/para-quien", label: "Para quién" },
-  { href: "/batch", label: "Batch" },
-  { href: "/glosa", label: "Glosa" },
+  { href: withBase("/mesa"), label: "Mesa" },
+  { href: withBase("/para-quien"), label: "Para quién" },
+  { href: withBase("/batch"), label: "Batch" },
+  { href: withBase("/glosa"), label: "Glosa" },
 ];
 ---
 
 <header class="site-header">
-  <a class="site-brand" href="/" aria-current={path === "/" ? "page" : undefined}>
+  <a class="site-brand" href={withBase("/")} aria-current={path === "/" ? "page" : undefined}>
     <BrandMark />
   </a>
   <nav class="mono" aria-label="Sitio">
@@ -31,7 +31,7 @@ const links = [
     <ThemeToggle />
     <a
       class="cut header-cta"
-      href="/lista"
+      href={withBase("/lista")}
       aria-current={path === "/lista" ? "page" : undefined}>Anótate</a
     >
   </nav>

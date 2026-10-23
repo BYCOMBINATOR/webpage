@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/paths";
 import BrandMark from "./BrandMark.astro";
 
 const year = new Date().getFullYear();
@@ -18,11 +19,11 @@ const year = new Date().getFullYear();
         <img class="orn" src="/logos/senales/mesa.svg" alt="" />
         Sitio
       </p>
-      <a href="/mesa">Qué hacemos</a>
-      <a href="/para-quien">Para quién</a>
-      <a href="/batch">Batch 01</a>
-      <a href="/lista">Lista de espera</a>
-      <a href="/glosa">Glosa</a>
+      <a href={withBase("/mesa")}>Qué hacemos</a>
+      <a href={withBase("/para-quien")}>Para quién</a>
+      <a href={withBase("/batch")}>Batch 01</a>
+      <a href={withBase("/lista")}>Lista de espera</a>
+      <a href={withBase("/glosa")}>Glosa</a>
     </div>
 
     <div class="foot-col">
@@ -30,10 +31,10 @@ const year = new Date().getFullYear();
         <img class="orn" src="/logos/senales/chip.svg" alt="" />
         Comunicación
       </p>
-      <a href="/comunica/#marca">Cómo se usa</a>
-      <a href="/comunica/#senales">Señales</a>
-      <a href="/comunica/#swag">Swag</a>
-      <a href="/comunica/#perfiles">Perfiles</a>
+      <a href={withBase("/comunica/#marca")}>Cómo se usa</a>
+      <a href={withBase("/comunica/#senales")}>Señales</a>
+      <a href={withBase("/comunica/#swag")}>Swag</a>
+      <a href={withBase("/comunica/#perfiles")}>Perfiles</a>
     </div>
   </div>
 

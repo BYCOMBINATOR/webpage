@@ -2,6 +2,7 @@
 import Marca from "../../components/comunica/Marca.astro";
 import Perfiles from "../../components/comunica/Perfiles.astro";
 import Swag from "../../components/comunica/Swag.astro";
+import { withBase } from "../../lib/paths";
 import Base from "../../layouts/Base.astro";
 import "../../styles/kit.css";
 ---
@@ -84,7 +85,7 @@ import "../../styles/kit.css";
       lista está en /lista.
     </p>
     <p style="margin-top: 1.2rem">
-      <a class="cut" href="/lista">Anótate</a>
+      <a class="cut" href={withBase("/lista")}>Anótate</a>
     </p>
   </section>
 </Base>

@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/paths";
 import Base from "../layouts/Base.astro";
 ---
 
@@ -17,28 +18,28 @@ import Base from "../layouts/Base.astro";
       networking.
     </p>
     <div class="hero-actions">
-      <a class="cut" href="/lista">Anótate a la lista</a>
-      <a class="cut ghost" href="/mesa">Qué hacemos</a>
+      <a class="cut" href={withBase("/lista")}>Anótate a la lista</a>
+      <a class="cut ghost" href={withBase("/mesa")}>Qué hacemos</a>
     </div>
   </section>
 
   <nav class="toc" aria-label="El sitio">
-    <a href="/mesa">
+    <a href={withBase("/mesa")}>
       <img class="orn" src="/logos/senales/puerta.svg" alt="" />
       <strong>Mesa</strong>
       <span>Qué hacemos. Presentaciones, office hours, retry.</span>
     </a>
-    <a href="/para-quien">
+    <a href={withBase("/para-quien")}>
       <img class="orn" src="/logos/senales/puente.svg" alt="" />
       <strong>Para quién</strong>
       <span>Fundadores de Bolivia y la diáspora.</span>
     </a>
-    <a href="/batch">
+    <a href={withBase("/batch")}>
       <img class="orn" src="/logos/senales/cuatro.svg" alt="" />
       <strong>Batch 01</strong>
       <span>Cuatro fundadores. Once semanas. Sin equity.</span>
     </a>
-    <a href="/glosa">
+    <a href={withBase("/glosa")}>
       <img class="orn" src="/logos/senales/chip.svg" alt="" />
       <strong>Glosa</strong>
       <span>Qué quiere decir mesa, hall, batch, intento.</span>

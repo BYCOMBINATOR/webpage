@@ -1,8 +1,10 @@
-import node from "@astrojs/node";
 import { defineConfig } from "astro/config";
 
+const pages = Boolean(process.env.CI);
+
 export default defineConfig({
-  adapter: node({ mode: "standalone" }),
+  site: "https://bycombinator.github.io",
+  base: pages ? "/webpage" : "/",
   server: { port: 4173, host: true },
   devToolbar: { enabled: false },
   vite: {

@@ -1,6 +1,7 @@
 ---
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
+import { withBase } from "../lib/paths";
 import "../styles/global.css";
 
 interface Props {
@@ -8,6 +9,8 @@ interface Props {
   description?: string;
 }
 const { title, description = "Una nueva comunidad se acerca." } = Astro.props;
+const origin = Astro.site ?? Astro.url;
+const ogImage = new URL(withBase("/logos/og.png"), origin).href;
 ---
 
 <!doctype html>
@@ -17,10 +20,10 @@ const { title, description = "Una nueva comunidad se acerca." } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" href="/logos/byc-b-sello-sombra.svg" type="image/svg+xml" />
+    <link rel="icon" href={withBase("/logos/byc-b-sello-sombra.svg")} type="image/svg+xml" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/logos/og.png" />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="640" />
     <meta name="twitter:card" content="summary_large_image" />

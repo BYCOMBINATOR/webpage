@@ -16,5 +16,6 @@ for (const [name, from] of links) {
   const dest = path.join(pub, name);
   const src = path.join(root, from);
   if (fs.existsSync(dest)) continue;
-  fs.symlinkSync(src, dest, "junction");
+  const type = process.platform === "win32" ? "junction" : "dir";
+  fs.symlinkSync(src, dest, type);
 }
