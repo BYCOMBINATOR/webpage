@@ -1,0 +1,118 @@
+---
+import Marca from "../../components/comunica/Marca.astro";
+import Perfiles from "../../components/comunica/Perfiles.astro";
+import Swag from "../../components/comunica/Swag.astro";
+import Base from "../../layouts/Base.astro";
+import "../../styles/kit.css";
+---
+
+<Base
+  title="BYC — comunicación"
+  description="Cómo se usa BYC. Marca, swag, perfiles. El cubo no es la comunidad."
+>
+  <section class="hero">
+    <p class="kicker mono">Comunicación</p>
+    <h1>El cubo no es la comunidad.</h1>
+    <p class="sub">
+      Marca primero: dónde sí y dónde no. Después merch. Después cómo se ve el
+      perfil. Diario: <strong>BYC</strong>. Ceremonial:
+      <strong>BY-COMBINATOR</strong>.
+    </p>
+  </section>
+
+  <nav class="tabs mono" role="tablist" aria-label="Comunicación">
+    <a
+      href="#marca"
+      id="tab-marca"
+      role="tab"
+      data-tab="marca"
+      aria-controls="marca"
+      aria-selected="true">Marca</a
+    >
+    <a
+      href="#swag"
+      id="tab-swag"
+      role="tab"
+      data-tab="swag"
+      aria-controls="swag"
+      aria-selected="false">Swag</a
+    >
+    <a
+      href="#perfiles"
+      id="tab-perfiles"
+      role="tab"
+      data-tab="perfiles"
+      aria-controls="perfiles"
+      aria-selected="false">Perfiles</a
+    >
+  </nav>
+
+  <div class="tab-panels">
+    <div
+      id="marca"
+      role="tabpanel"
+      data-panel="marca"
+      aria-labelledby="tab-marca"
+    >
+      <Marca />
+    </div>
+    <div
+      id="swag"
+      role="tabpanel"
+      data-panel="swag"
+      aria-labelledby="tab-swag"
+      hidden
+    >
+      <Swag />
+    </div>
+    <div
+      id="perfiles"
+      role="tabpanel"
+      data-panel="perfiles"
+      aria-labelledby="tab-perfiles"
+      hidden
+    >
+      <Perfiles />
+    </div>
+  </div>
+
+  <section class="salt section">
+    <p class="kicker mono">Lista</p>
+    <h2>La comunidad todavía no abrió.</h2>
+    <p>
+      Si llegaste por una collab, el kit está en Marca. Si querés la mesa, la
+      lista está en la portada.
+    </p>
+    <p style="margin-top: 1.2rem">
+      <a class="cut" href="/">Anotarme</a>
+    </p>
+  </section>
+</Base>
+
+<script>
+  const TABS = new Set(["marca", "swag", "perfiles"]);
+
+  function tabFromHash() {
+    const id = location.hash.replace("#", "");
+    if (TABS.has(id)) return id;
+    return "marca";
+  }
+
+  function apply(scroll = false) {
+    const tab = tabFromHash();
+    document.querySelectorAll("[data-panel]").forEach((el) => {
+      const on = el.getAttribute("data-panel") === tab;
+      (el as HTMLElement).hidden = !on;
+    });
+    document.querySelectorAll("[data-tab]").forEach((el) => {
+      const on = el.getAttribute("data-tab") === tab;
+      el.setAttribute("aria-selected", String(on));
+    });
+    if (scroll && TABS.has(location.hash.replace("#", ""))) {
+      document.querySelector(".tabs")?.scrollIntoView({ block: "start" });
+    }
+  }
+
+  apply(false);
+  addEventListener("hashchange", () => apply(true));
+</script>
