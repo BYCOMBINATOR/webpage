@@ -1,0 +1,38 @@
+---
+import BrandMark from "./BrandMark.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const raw = Astro.url.pathname;
+const path = raw.length > 1 && raw.endsWith("/") ? raw.slice(0, -1) : raw;
+
+const links = [
+  { href: "/mesa", label: "Mesa" },
+  { href: "/para-quien", label: "Para quién" },
+  { href: "/batch", label: "Batch" },
+  { href: "/glosa", label: "Glosa" },
+];
+---
+
+<header class="site-header">
+  <a class="site-brand" href="/" aria-current={path === "/" ? "page" : undefined}>
+    <BrandMark />
+  </a>
+  <nav class="mono" aria-label="Sitio">
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          aria-current={path === link.href ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+    <ThemeToggle />
+    <a
+      class="cut header-cta"
+      href="/lista"
+      aria-current={path === "/lista" ? "page" : undefined}>Anótate</a
+    >
+  </nav>
+</header>

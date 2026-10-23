@@ -1,19 +1,47 @@
 ---
-import WaitlistForm from "../components/WaitlistForm.astro";
 import Base from "../layouts/Base.astro";
 ---
 
 <Base
-  title="BYC — una nueva comunidad se acerca"
-  description="Una nueva comunidad se acerca. Founders de Bolivia y la diáspora. Anotate a la lista."
+  title="BYC — La mesa, no el hall."
+  description="Fundadores de Bolivia y la diáspora. Cuatro sillas. Conversación, no networking. Anótate a la lista del Batch 01."
 >
-  <section class="hero">
-    <img class="hero-mark" src="/logos/byc-neg.svg" alt="BYC" />
-    <p class="kicker mono">La mesa, no el hall.</p>
-    <h1>Una nueva comunidad se acerca.</h1>
-    <p class="sub">
-      Founders de Bolivia y la diáspora. Cuando abra, avisamos acá.
+  <section class="home-hero">
+    <p class="kicker mono">
+      <img class="orn" src="/logos/senales/mesa.svg" alt="" />
+      BYC · Batch 01 · Bolivia
     </p>
-    <WaitlistForm />
+    <h1>La mesa, no el hall.</h1>
+    <p class="lede">
+      Fundadores de Bolivia y la diáspora. Cuatro sillas. Conversación, no
+      networking.
+    </p>
+    <div class="hero-actions">
+      <a class="cut" href="/lista">Anótate a la lista</a>
+      <a class="cut ghost" href="/mesa">Qué hacemos</a>
+    </div>
   </section>
+
+  <nav class="toc" aria-label="El sitio">
+    <a href="/mesa">
+      <img class="orn" src="/logos/senales/puerta.svg" alt="" />
+      <strong>Mesa</strong>
+      <span>Qué hacemos. Presentaciones, office hours, retry.</span>
+    </a>
+    <a href="/para-quien">
+      <img class="orn" src="/logos/senales/puente.svg" alt="" />
+      <strong>Para quién</strong>
+      <span>Fundadores de Bolivia y la diáspora.</span>
+    </a>
+    <a href="/batch">
+      <img class="orn" src="/logos/senales/cuatro.svg" alt="" />
+      <strong>Batch 01</strong>
+      <span>Cuatro fundadores. Once semanas. Sin equity.</span>
+    </a>
+    <a href="/glosa">
+      <img class="orn" src="/logos/senales/chip.svg" alt="" />
+      <strong>Glosa</strong>
+      <span>Qué quiere decir mesa, hall, batch, intento.</span>
+    </a>
+  </nav>
 </Base>

@@ -80,11 +80,11 @@ import "../../styles/kit.css";
     <p class="kicker mono">Lista</p>
     <h2>La comunidad todavía no abrió.</h2>
     <p>
-      Si llegaste por una collab, el kit está en Marca. Si querés la mesa, la
-      lista está en la portada.
+      Si llegaste por una collab, el kit está en Marca. Si quieres la mesa, la
+      lista está en /lista.
     </p>
     <p style="margin-top: 1.2rem">
-      <a class="cut" href="/">Anotarme</a>
+      <a class="cut" href="/lista">Anótate</a>
     </p>
   </section>
 </Base>
@@ -98,6 +98,23 @@ import "../../styles/kit.css";
     return "marca";
   }
 
+  function measureChrome() {
+    const header = document.querySelector(".site-header");
+    const tabs = document.querySelector(".tabs");
+    if (header instanceof HTMLElement) {
+      document.documentElement.style.setProperty(
+        "--header-h",
+        `${Math.round(header.getBoundingClientRect().height)}px`,
+      );
+    }
+    if (tabs instanceof HTMLElement) {
+      document.documentElement.style.setProperty(
+        "--tabs-h",
+        `${Math.round(tabs.getBoundingClientRect().height)}px`,
+      );
+    }
+  }
+
   function apply(scroll = false) {
     const tab = tabFromHash();
     document.querySelectorAll("[data-panel]").forEach((el) => {
@@ -109,10 +126,61 @@ import "../../styles/kit.css";
       el.setAttribute("aria-selected", String(on));
     });
     if (scroll && TABS.has(location.hash.replace("#", ""))) {
-      document.querySelector(".tabs")?.scrollIntoView({ block: "start" });
+      const tabs = document.querySelector(".tabs");
+      const headerH =
+        parseFloat(
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--header-h",
+          ),
+        ) || 56;
+      if (tabs instanceof HTMLElement) {
+        window.scrollTo({ top: Math.max(0, tabs.offsetTop - headerH) });
+      }
     }
+    measureChrome();
+    syncRail();
+  }
+
+  function syncRail() {
+    const links = [
+      ...document.querySelectorAll<HTMLAnchorElement>(".kit-nav a[href^='#']"),
+    ];
+    if (!links.length) return;
+    const headerH =
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--header-h",
+        ),
+      ) || 56;
+    const tabsH =
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--tabs-h"),
+      ) || 48;
+    const line = headerH + tabsH + 24;
+    let current = links[0];
+    for (const link of links) {
+      const target = document.querySelector(link.hash);
+      if (
+        target instanceof HTMLElement &&
+        target.getBoundingClientRect().top <= line
+      ) {
+        current = link;
+      }
+    }
+    links.forEach((link) => {
+      const on = link === current;
+      link.classList.toggle("is-active", on);
+      if (on) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    });
+    const now = document.querySelector("[data-kit-now]");
+    const label = current.querySelector(".kit-pip-label");
+    if (now && label) now.textContent = label.textContent?.trim() || "";
   }
 
   apply(false);
   addEventListener("hashchange", () => apply(true));
+  addEventListener("scroll", syncRail, { passive: true });
+  addEventListener("resize", measureChrome);
+  measureChrome();
 </script>

@@ -20,28 +20,46 @@ const senales = [
   { id: "puente", label: "Puente", meta: "diáspora" },
   { id: "timbre", label: "Timbre", meta: "el visto" },
   { id: "chip", label: "Chip", meta: "sobre foto" },
+  { id: "sal", label: "Sal", meta: "el campo claro" },
+  { id: "sombra", label: "Sombra", meta: "el campo oscuro" },
+  { id: "invertir", label: "Invertir", meta: "cambiar de modo" },
 ];
 const patrones = [
   { id: "patron-mesa", label: "Mesa" },
   { id: "patron-cruz", label: "Cruz" },
   { id: "patron-grieta", label: "Fisura" },
 ];
+const toc = [
+  { href: "#nombres", label: "Nombres" },
+  { href: "#color", label: "Color" },
+  { href: "#tipo", label: "Tipo" },
+  { href: "#tagline", label: "Tagline" },
+  { href: "#mark", label: "Mark" },
+  { href: "#avatar", label: "Avatar" },
+  { href: "#senales", label: "Señales" },
+  { href: "#usos", label: "Usos" },
+  { href: "#collab", label: "Collab" },
+  { href: "#no", label: "No" },
+  { href: "#si", label: "Sí" },
+];
 ---
 
-<nav class="kit-nav mono">
-  <a href="#nombres">Nombres</a>
-  <a href="#color">Color</a>
-  <a href="#tipo">Tipo</a>
-  <a href="#tagline">Tagline</a>
-  <a href="#mark">Mark</a>
-  <a href="#avatar">Avatar</a>
-  <a href="#senales">Señales</a>
-  <a href="#usos">Usos</a>
-  <a href="#collab">Collab</a>
-  <a href="#no">No</a>
-  <a href="#si">Sí</a>
-</nav>
+<div class="kit-shell">
+  <nav class="kit-nav mono" aria-label="Secciones de marca">
+    <p class="kit-now" data-kit-now>Nombres</p>
+    <div class="kit-pips">
+      {
+        toc.map((item) => (
+          <a href={item.href} title={item.label} aria-label={item.label}>
+            <span class="kit-pip-label">{item.label}</span>
+            <span class="kit-pip" aria-hidden="true"></span>
+          </a>
+        ))
+      }
+    </div>
+  </nav>
 
+  <div class="kit-body">
 <section class="salt section" id="nombres">
   <p class="kicker mono">Nombres</p>
   <div class="grid-2">
@@ -135,7 +153,7 @@ const patrones = [
   <div class="grid-2" style="margin-top: 1.6rem">
     <article>
       <p class="mono">Invocación</p>
-      <p class="line-lock">Traé el intento, no el pitch.</p>
+      <p class="line-lock">Trae el intento, no el pitch.</p>
       <p>Convocatoria, office hours, stories.</p>
     </article>
     <article>
@@ -322,7 +340,7 @@ const patrones = [
   <div class="wall" style="margin-top: 1.8rem">
     <article class="piece quote">
       <img class="senal-float" src="/logos/senales/brujula.svg" alt="" />
-      <p class="cap">Traé el intento, no el pitch.</p>
+      <p class="cap">Trae el intento, no el pitch.</p>
       <p class="mono" style="color: var(--grieta)">office hours · 19h</p>
       <span class="tag mono">Post · brújula</span>
     </article>
@@ -348,7 +366,7 @@ const patrones = [
       </header>
       <p class="tagline-line">La mesa, no el hall.</p>
       <p class="body-lines">
-        Batch 01 · La Paz<br />
+        Batch 01 · Bolivia<br />
         Cuatro sillas. Conversación, no networking.
       </p>
       <p class="foot-line mono">BYC · mesa · batch · intros</p>
@@ -357,7 +375,7 @@ const patrones = [
     <article class="piece sobre-mock">
       <img class="lock" src="/logos/byc.svg" alt="BYC" />
       <img class="senal-mini" src="/logos/senales/sobre.svg" alt="" />
-      <p class="addr mono">Batch 01 · La Paz</p>
+      <p class="addr mono">Batch 01 · Bolivia</p>
       <p class="tagline-line">La mesa, no el hall.</p>
       <span class="tag mono">Sobre</span>
     </article>
@@ -435,7 +453,7 @@ const patrones = [
       <img class="corte-overlay" src="/logos/senales/corte.svg" alt="" />
       <img class="senal-hero" src="/logos/senales/brujula.svg" alt="" />
       <p class="cap">
-        Traé el intento, no el pitch.
+        Trae el intento, no el pitch.
         <em>office hours · 19h</em>
       </p>
       <span class="tag mono">Story · rumbo</span>
@@ -488,7 +506,7 @@ const patrones = [
   <div class="wall">
     <article class="piece quote">
       <img class="senal-float" src="/logos/senales/intento.svg" alt="" />
-      <p class="cap">Traé el intento, no el pitch.</p>
+      <p class="cap">Trae el intento, no el pitch.</p>
       <p class="mono" style="color: var(--grieta)">BYC</p>
       <span class="tag mono">Post · intento</span>
     </article>
@@ -529,19 +547,19 @@ const patrones = [
       <img class="lock" src="/logos/byc.svg" alt="BYC" />
       <img class="senal-mini" src="/logos/senales/entrada.svg" alt="" />
       <p class="tagline-line">La mesa, no el hall.</p>
-      <p class="body-lines">Batch 01 · La Paz · once semanas</p>
+      <p class="body-lines">Batch 01 · Bolivia · once semanas</p>
       <p class="foot-line mono">BY-COMBINATOR</p>
       <span class="tag mono">Roller</span>
     </article>
     <article class="piece masthead">
       <img class="lock" src="/logos/byc-neg.svg" alt="BYC" />
       <img class="senal-mini invert" src="/logos/senales/timbre.svg" alt="" />
-      <p class="cap" style="font-size: 1.45rem">Traé el intento, no el pitch.</p>
+      <p class="cap" style="font-size: 1.45rem">Trae el intento, no el pitch.</p>
       <span class="tag mono">Mail · encabezado</span>
     </article>
     <article class="piece poster">
       <img class="corte-overlay dark" src="/logos/senales/corte.svg" alt="" />
-      <p class="mono" style="color: var(--tinta)">Batch 01 · La Paz</p>
+      <p class="mono" style="color: var(--tinta)">Batch 01 · Bolivia</p>
       <img class="lock" src="/logos/byc.svg" alt="BYC" />
       <h2>Cuatro founders.<br />Once semanas.<br />Sin equity.</h2>
       <p class="foot-line mono">postulaciones abiertas</p>
@@ -700,7 +718,7 @@ const patrones = [
 
   <div class="wall" style="margin-top: 1.1rem">
     <article class="piece poster">
-      <p class="mono" style="color: var(--tinta)">Batch 01 · La Paz</p>
+      <p class="mono" style="color: var(--tinta)">Batch 01 · Bolivia</p>
       <img class="lock" src="/logos/byc.svg" alt="BYC" />
       <h2>Cuatro founders.<br />Once semanas.<br />Sin equity.</h2>
       <p class="foot-line mono">BY-COMBINATOR · postulaciones abiertas</p>
@@ -724,7 +742,7 @@ const patrones = [
       <p class="mono" style="color: var(--grieta); margin-top: auto">
         48H · MESA ABIERTA
       </p>
-      <h2>Traé el intento, no el pitch.</h2>
+      <h2>Trae el intento, no el pitch.</h2>
       <span class="tag mono">Slide</span>
     </article>
   </div>
@@ -769,3 +787,5 @@ const patrones = [
     </article>
   </div>
 </section>
+  </div>
+</div>

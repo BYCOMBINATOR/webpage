@@ -10,8 +10,14 @@ const { compact = false } = Astro.props;
     <label>Company <input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
   </p>
   <label>
-    Mail
-    <input type="email" name="email" required placeholder="vos@startup.com" autocomplete="email" />
+    Correo
+    <input
+      type="email"
+      name="email"
+      required
+      placeholder="tu@proyecto.com"
+      autocomplete="email"
+    />
   </label>
   {
     compact ? null : (
@@ -22,14 +28,14 @@ const { compact = false } = Astro.props;
     )
   }
   <label>
-    Qué sos
+    Quién eres
     <select name="rol">
-      <option value="founder">Founder</option>
-      <option value="guia">Guía / mentor</option>
+      <option value="founder">Fundador o fundadora</option>
+      <option value="guia">Guía o mentor</option>
       <option value="otro">Otra cosa</option>
     </select>
   </label>
-  <button class="cut" type="submit">Avisame cuando abra la mesa</button>
+  <button class="cut" type="submit">Avísame cuando abra la mesa</button>
   <p class="form-msg" data-msg></p>
 </form>
 
@@ -53,19 +59,17 @@ const { compact = false } = Astro.props;
       if (!res.ok) {
         if (msg) {
           msg.classList.remove("ok");
-          msg.textContent = data.message || "No se pudo anotar. Probá de nuevo.";
+          msg.textContent =
+            data.message || "No se pudo anotar. Prueba de nuevo.";
         }
         return;
       }
-      form.reset();
-      if (msg) {
-        msg.classList.add("ok");
-        msg.textContent = data.message || "Ya estás en la lista.";
-      }
+      window.location.href = "/gracias";
+      return;
     } catch {
       if (msg) {
         msg.classList.remove("ok");
-        msg.textContent = "No se pudo anotar. Probá de nuevo.";
+        msg.textContent = "No se pudo anotar. Prueba de nuevo.";
       }
     } finally {
       if (button) button.removeAttribute("disabled");

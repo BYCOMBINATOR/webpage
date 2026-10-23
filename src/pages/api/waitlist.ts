@@ -38,7 +38,7 @@ function fail(message: string, status: number, request: Request) {
   }
   return new Response(null, {
     status: 303,
-    headers: { Location: "/?error=1" },
+    headers: { Location: "/lista?error=1" },
   });
 }
 
@@ -56,7 +56,7 @@ export const POST: APIRoute = async ({ request }) => {
   const rol = ROLES.has(rolRaw) ? rolRaw : "otro";
 
   if (!emailOk(email)) {
-    return fail("Mail inválido.", 400, request);
+    return fail("Correo inválido.", 400, request);
   }
 
   await fs.mkdir(path.dirname(FILE), { recursive: true });

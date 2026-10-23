@@ -1,0 +1,29 @@
+---
+import WaitlistForm from "../components/WaitlistForm.astro";
+import Base from "../layouts/Base.astro";
+
+const error = Astro.url.searchParams.get("error");
+---
+
+<Base
+  title="BYC — Lista de espera"
+  description="Anótate. Si hay Batch 01, te avisamos. Fundador, guía o alguien que trae un intento."
+>
+  <article class="page">
+    <p class="kicker mono">
+      <img class="orn" src="/logos/senales/lista.svg" alt="" />
+      Lista
+    </p>
+    <h1>La comunidad todavía no abrió.</h1>
+    <p class="lede">
+      Anótate. Si hay Batch 01, te avisamos. Fundador, guía o alguien que
+      trae un intento.
+    </p>
+    {error ? (
+      <p class="form-msg">
+        No se pudo anotar. Revisa el correo y prueba de nuevo.
+      </p>
+    ) : null}
+    <WaitlistForm />
+  </article>
+</Base>

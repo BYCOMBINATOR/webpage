@@ -1,0 +1,11 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<span class:list={["brand-mark", className]}>
+  <img class="on-dark" src="/logos/byc-neg.svg" alt="BYC" />
+  <img class="on-light" src="/logos/byc.svg" alt="BYC" />
+</span>

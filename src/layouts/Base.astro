@@ -1,13 +1,13 @@
 ---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
 import "../styles/global.css";
 
 interface Props {
   title: string;
   description?: string;
 }
-
 const { title, description = "Una nueva comunidad se acerca." } = Astro.props;
-const path = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -20,25 +20,66 @@ const path = Astro.url.pathname;
     <link rel="icon" href="/logos/byc-b-sello-sombra.svg" type="image/svg+xml" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <script is:inline>
+      (function () {
+        try {
+          const query = new URLSearchParams(location.search).get("tema");
+          const stored = localStorage.getItem("byc-theme");
+          const theme =
+            query === "sal"
+              ? "light"
+              : query === "sombra"
+                ? "dark"
+                : stored === "light" || stored === "dark"
+                  ? stored
+                  : window.matchMedia("(prefers-color-scheme: light)").matches
+                    ? "light"
+                    : "dark";
+          document.documentElement.dataset.theme = theme;
+          if (query === "sal" || query === "sombra") {
+            localStorage.setItem("byc-theme", theme);
+          }
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
   </head>
   <body>
-    <header class="bar">
-      <a href="/"
-        ><img class="bar-mark" src="/logos/byc-neg.svg" alt="BYC" /></a
-      >
-      <nav class="mono">
-        <a href="/" aria-current={path === "/" ? "page" : undefined}>Lista</a>
-        <a
-          href="/comunica/"
-          aria-current={path.startsWith("/comunica") ? "page" : undefined}
-          >Comunicación</a
-        >
-      </nav>
-    </header>
-    <slot />
-    <footer class="foot mono">
-      <span>BYC · BY-COMBINATOR</span>
-      <a href="/comunica/#marca">Cómo se usa la marca</a>
-    </footer>
+    <SiteHeader />
+    <main>
+      <slot />
+    </main>
+    <SiteFooter />
+    <script>
+      function currentTheme() {
+        return document.documentElement.dataset.theme === "light"
+          ? "light"
+          : "dark";
+      }
+      function setTheme(next: string) {
+        document.documentElement.dataset.theme = next;
+        try {
+          localStorage.setItem("byc-theme", next);
+        } catch {
+          /* ignore */
+        }
+      }
+      function labelToggle(btn: Element) {
+        btn.setAttribute(
+          "aria-label",
+          currentTheme() === "light"
+            ? "Pasar a modo oscuro"
+            : "Pasar a modo claro",
+        );
+      }
+      document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+        labelToggle(btn);
+        btn.addEventListener("click", () => {
+          setTheme(currentTheme() === "dark" ? "light" : "dark");
+          labelToggle(btn);
+        });
+      });
+    </script>
   </body>
 </html>

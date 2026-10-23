@@ -1,0 +1,44 @@
+---
+import BrandMark from "./BrandMark.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <BrandMark class="foot-lock" />
+      <p class="foot-tag">La mesa, no el hall.</p>
+      <p class="mono foot-meta">BYC · BY-COMBINATOR</p>
+      <p class="mono foot-meta">Bolivia · sin fines de lucro</p>
+    </div>
+
+    <div class="foot-col">
+      <p class="mono foot-head">
+        <img class="orn" src="/logos/senales/mesa.svg" alt="" />
+        Sitio
+      </p>
+      <a href="/mesa">Qué hacemos</a>
+      <a href="/para-quien">Para quién</a>
+      <a href="/batch">Batch 01</a>
+      <a href="/lista">Lista de espera</a>
+      <a href="/glosa">Glosa</a>
+    </div>
+
+    <div class="foot-col">
+      <p class="mono foot-head">
+        <img class="orn" src="/logos/senales/chip.svg" alt="" />
+        Comunicación
+      </p>
+      <a href="/comunica/#marca">Cómo se usa</a>
+      <a href="/comunica/#senales">Señales</a>
+      <a href="/comunica/#swag">Swag</a>
+      <a href="/comunica/#perfiles">Perfiles</a>
+    </div>
+  </div>
+
+  <div class="foot-bottom mono">
+    <span>Fundadores de Bolivia y la diáspora.</span>
+    <span>© {year} BYC</span>
+  </div>
+</footer>

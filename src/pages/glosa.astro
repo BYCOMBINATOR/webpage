@@ -1,0 +1,140 @@
+---
+import Base from "../layouts/Base.astro";
+
+const terms = [
+  {
+    id: "mesa",
+    orn: "mesa",
+    term: "Mesa",
+    def: "Cuatro sillas. Conversación entre quienes construyen. No es un evento ni un hall.",
+  },
+  {
+    id: "hall",
+    orn: "puerta",
+    term: "Hall",
+    def: "El pasillo de contactos. Lo que esta mesa no es.",
+  },
+  {
+    id: "batch",
+    orn: "cuatro",
+    term: "Batch",
+    def: "Una ronda corta de pocos fundadores. Un grupo, no una cohorte infinita.",
+  },
+  {
+    id: "intento",
+    orn: "intento",
+    term: "Intento",
+    def: "Lo que estás construyendo ahora. Trae eso, no el discurso.",
+  },
+  {
+    id: "pitch",
+    orn: "intento",
+    term: "Pitch",
+    def: "La presentación ensayada. Aquí no. Trae el intento.",
+  },
+  {
+    id: "office-hours",
+    orn: "reloj",
+    term: "Office hours",
+    def: "Hora para hablar del intento. No para exponer.",
+  },
+  {
+    id: "retry",
+    orn: "retry",
+    term: "Retry",
+    def: "Falló. Siguiente intento, misma mesa.",
+  },
+  {
+    id: "lista",
+    orn: "lista",
+    term: "Lista",
+    def: "Lista de espera del Batch 01. Te avisamos cuando abra.",
+  },
+  {
+    id: "diaspora",
+    orn: "puente",
+    term: "Diáspora",
+    def: "Bolivianas y bolivianos que ya salieron. Siguen en la misma mesa.",
+  },
+  {
+    id: "founder",
+    orn: "dos",
+    term: "Founder",
+    def: "Fundador o fundadora. Quien está construyendo una empresa.",
+  },
+  {
+    id: "equity",
+    orn: "timbre",
+    term: "Equity",
+    def: "Participación de la empresa. BYC no pide equity.",
+  },
+  {
+    id: "networking",
+    orn: "silla",
+    term: "Networking",
+    def: "Intercambio de tarjetas. Hay otros lugares para eso.",
+  },
+  {
+    id: "expediente",
+    orn: "sobre",
+    term: "Expediente",
+    def: "El trámite como si fuera el producto. No.",
+  },
+  {
+    id: "sal",
+    orn: "sal",
+    term: "Sal",
+    def: "El modo claro. El cuadrado vacío. Papel, día.",
+  },
+  {
+    id: "sombra",
+    orn: "sombra",
+    term: "Sombra",
+    def: "El modo oscuro. El cuadrado lleno. Noche, tinta.",
+  },
+  {
+    id: "invertir",
+    orn: "invertir",
+    term: "Invertir",
+    def: "El botón de los dos modos. Cuadrado vacío, cuadrado lleno. No es un sol ni una luna.",
+  },
+  {
+    id: "senal",
+    orn: "chip",
+    term: "Señal",
+    def: "Ornamento. Adorna. El cubo firma.",
+  },
+];
+---
+
+<Base
+  title="BYC — Glosa"
+  description="Qué quiere decir mesa, hall, batch, intento, office hours, retry y el resto de la voz de BYC."
+>
+  <article class="page">
+    <p class="kicker mono">
+      <img class="orn" src="/logos/senales/chip.svg" alt="" />
+      Glosa
+    </p>
+    <h1>Las palabras de esta mesa.</h1>
+    <p class="lede">
+      Si una palabra suena rara, está aquí. El cubo firma. La señal adorna.
+    </p>
+
+    <ul class="facts glosa-list">
+      {
+        terms.map((item) => (
+          <li id={item.id}>
+            <img class="orn" src={`/logos/senales/${item.orn}.svg`} alt="" />
+            <strong>{item.term}</strong>
+            <p>{item.def}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="page-cta">
+      <a class="cut" href="/lista">Anótate a la lista</a>
+    </p>
+  </article>
+</Base>
