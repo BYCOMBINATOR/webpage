@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none" stroke="#10141C" stroke-width="2.2" stroke-linejoin="miter" stroke-linecap="square">
+  <path d="M40 6 L50 40 L40 74 L30 40 Z"/>
+  <path d="M8 40 L40 48 L72 40 L40 32 Z"/>
+  <path d="M40 6 L50 40 L30 40 Z" fill="#10141C" stroke="none"/>
+</svg>

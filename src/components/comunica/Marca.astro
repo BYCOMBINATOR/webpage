@@ -1,9 +1,42 @@
+---
+const senales = [
+  { id: "mesa", label: "Mesa", meta: "cuatro sillas" },
+  { id: "silla", label: "Silla", meta: "el asiento" },
+  { id: "puerta", label: "Puerta", meta: "te la abren" },
+  { id: "brujula", label: "Brújula", meta: "el rumbo" },
+  { id: "retry", label: "Retry", meta: "mismo intento" },
+  { id: "afuera", label: "Afuera", meta: "ya salieron" },
+  { id: "cuatro", label: "Cuatro", meta: "el batch" },
+  { id: "dos", label: "Dos", meta: "conversación" },
+  { id: "llave", label: "Llave", meta: "la puerta" },
+  { id: "sobre", label: "Sobre", meta: "papelería" },
+  { id: "grieta", label: "Grieta", meta: "sin barniz" },
+  { id: "reloj", label: "Reloj", meta: "19h" },
+  { id: "corte", label: "Corte", meta: "el recorte" },
+  { id: "esquina", label: "Esquina", meta: "el marco" },
+  { id: "lista", label: "Lista", meta: "la espera" },
+  { id: "intento", label: "Intento", meta: "no el pitch" },
+  { id: "entrada", label: "Entrada", meta: "mesa abierta" },
+  { id: "puente", label: "Puente", meta: "diáspora" },
+  { id: "timbre", label: "Timbre", meta: "el visto" },
+  { id: "chip", label: "Chip", meta: "sobre foto" },
+];
+const patrones = [
+  { id: "patron-mesa", label: "Mesa" },
+  { id: "patron-cruz", label: "Cruz" },
+  { id: "patron-grieta", label: "Fisura" },
+];
+---
+
 <nav class="kit-nav mono">
   <a href="#nombres">Nombres</a>
   <a href="#color">Color</a>
   <a href="#tipo">Tipo</a>
+  <a href="#tagline">Tagline</a>
   <a href="#mark">Mark</a>
   <a href="#avatar">Avatar</a>
+  <a href="#senales">Señales</a>
+  <a href="#usos">Usos</a>
   <a href="#collab">Collab</a>
   <a href="#no">No</a>
   <a href="#si">Sí</a>
@@ -31,7 +64,7 @@
       <h2>Voz</h2>
       <p>
         Español concreto. Mesa, batch, intento, retry. Nunca expediente,
-        comité, networking, ecosistema. «Traé el intento, no el pitch.»
+        comité, networking, ecosistema. Tagline: «La mesa, no el hall.»
       </p>
     </article>
   </div>
@@ -87,6 +120,38 @@
       <p class="mono">Meta · IBM Plex Mono</p>
       <p class="type-meta">BATCH 01 · LA PAZ · 19H</p>
       <p>Batch, hora, UI chica. Nunca el titular.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="tagline">
+  <p class="kicker mono">Tagline</p>
+  <p class="type-voz" style="max-width: 22rem">La mesa, no el hall.</p>
+  <p class="note">
+    Una sola. Debajo del lockup, en el pie del documento, en el post. No se
+    parafrasea. El cubo no lleva tagline pegado: el tipo va al lado o abajo,
+    con aire de media cara.
+  </p>
+  <div class="grid-2" style="margin-top: 1.6rem">
+    <article>
+      <p class="mono">Invocación</p>
+      <p class="line-lock">Traé el intento, no el pitch.</p>
+      <p>Convocatoria, office hours, stories.</p>
+    </article>
+    <article>
+      <p class="mono">Prueba</p>
+      <p class="line-lock">Son pocos, pero ya salieron afuera.</p>
+      <p>Headline cuando hay que mostrar que no es un club local.</p>
+    </article>
+    <article>
+      <p class="mono">Promesa</p>
+      <p class="line-lock">No te hacemos dar vueltas.</p>
+      <p>Valla, slide, cuando el trámite es el enemigo.</p>
+    </article>
+    <article>
+      <p class="mono">No es tagline</p>
+      <p class="line-lock">El cubo no es la comunidad.</p>
+      <p>Nota interna del kit. No va a la red ni a la carta.</p>
     </article>
   </div>
 </section>
@@ -191,6 +256,297 @@
       </div>
       <figcaption>No · lockup en el círculo.</figcaption>
     </figure>
+  </div>
+</section>
+
+<section class="section" id="senales">
+  <p class="kicker mono">Señales</p>
+  <h2>Ornamento. No son el mark.</h2>
+  <p class="note">
+    Iconos para papelería y posts, como el dibujo en un empaque: adornan, no
+    firman. Misma sangre que el cubo: trazo 2.2, esquina seca, sal sobre
+    sombra. No montaña, no folklore, no redondear. El cubo no se recicla como
+    pictograma.
+  </p>
+  <ul class="senal-grid">
+    {
+      senales.map((s) => (
+        <li>
+          <span class="senal-tile">
+            <img src={`/logos/senales/${s.id}.svg`} alt="" />
+          </span>
+          <strong>{s.label}</strong>
+          <span class="mono">{s.meta}</span>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="downloads">
+    {
+      senales.map((s) => (
+        <a href={`/logos/senales/${s.id}.svg`} download>
+          {s.id}.svg
+        </a>
+      ))
+    }
+  </div>
+
+  <h3 style="margin-top: 2.2rem">Patrones</h3>
+  <p class="note">
+    Marca de agua. Se repiten. Mesa, cruz, fisura. Nunca al tamaño del
+    lockup, nunca en naranja, nunca como fondo de foto.
+  </p>
+  <div class="patron-row">
+    {
+      patrones.map((p) => (
+        <figure>
+          <div
+            class="patron-swatch"
+            style={`background-image: url('/logos/senales/${p.id}.svg')`}
+          ></div>
+          <figcaption>{p.label}</figcaption>
+        </figure>
+      ))
+    }
+  </div>
+  <div class="downloads">
+    {
+      patrones.map((p) => (
+        <a href={`/logos/senales/${p.id}.svg`} download>
+          {p.id}.svg
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="wall" style="margin-top: 1.8rem">
+    <article class="piece quote">
+      <img class="senal-float" src="/logos/senales/brujula.svg" alt="" />
+      <p class="cap">Traé el intento, no el pitch.</p>
+      <p class="mono" style="color: var(--grieta)">office hours · 19h</p>
+      <span class="tag mono">Post · brújula</span>
+    </article>
+    <article class="piece quote">
+      <img class="senal-float" src="/logos/senales/retry.svg" alt="" />
+      <p class="cap">Falló. Siguiente intento, misma mesa.</p>
+      <p class="mono" style="color: var(--grieta)">batch 01</p>
+      <span class="tag mono">Post · retry</span>
+    </article>
+    <article class="piece quote">
+      <img class="senal-float" src="/logos/senales/llave.svg" alt="" />
+      <p class="cap">Te abren la puerta, no te hacen dar vueltas.</p>
+      <p class="mono" style="color: var(--grieta)">BYC</p>
+      <span class="tag mono">Post · llave</span>
+    </article>
+  </div>
+
+  <div class="wall" style="margin-top: 1.1rem">
+    <article class="piece carta ornato">
+      <header>
+        <img class="lock" src="/logos/byc.svg" alt="BYC" />
+        <img class="senal-mini" src="/logos/senales/mesa.svg" alt="" />
+      </header>
+      <p class="tagline-line">La mesa, no el hall.</p>
+      <p class="body-lines">
+        Batch 01 · La Paz<br />
+        Cuatro sillas. Conversación, no networking.
+      </p>
+      <p class="foot-line mono">BYC · mesa · batch · intros</p>
+      <span class="tag mono">Carta · patrón</span>
+    </article>
+    <article class="piece sobre-mock">
+      <img class="lock" src="/logos/byc.svg" alt="BYC" />
+      <img class="senal-mini" src="/logos/senales/sobre.svg" alt="" />
+      <p class="addr mono">Batch 01 · La Paz</p>
+      <p class="tagline-line">La mesa, no el hall.</p>
+      <span class="tag mono">Sobre</span>
+    </article>
+    <article class="piece">
+      <div class="high-row">
+        <figure>
+          <span class="high-disc">
+            <img src="/logos/senales/mesa.svg" alt="" />
+          </span>
+          <figcaption class="mono">Mesa</figcaption>
+        </figure>
+        <figure>
+          <span class="high-disc">
+            <img src="/logos/senales/cuatro.svg" alt="" />
+          </span>
+          <figcaption class="mono">Batch</figcaption>
+        </figure>
+        <figure>
+          <span class="high-disc">
+            <img src="/logos/senales/retry.svg" alt="" />
+          </span>
+          <figcaption class="mono">Retry</figcaption>
+        </figure>
+        <figure>
+          <span class="high-disc">
+            <img src="/logos/senales/reloj.svg" alt="" />
+          </span>
+          <figcaption class="mono">19h</figcaption>
+        </figure>
+      </div>
+      <span class="tag mono">Highlights</span>
+    </article>
+  </div>
+
+  <div class="wall" style="margin-top: 1.1rem">
+    <article class="piece sticker-sheet-senal">
+      {
+        senales.map((s) => (
+          <span class="mini">
+            <img src={`/logos/senales/${s.id}.svg`} alt="" />
+          </span>
+        ))
+      }
+      <span class="tag mono">Stickers · señales</span>
+    </article>
+    <article class="piece quote">
+      <img class="senal-float" src="/logos/senales/dos.svg" alt="" />
+      <p class="cap">Conversación, no networking.</p>
+      <p class="mono" style="color: var(--grieta)">cuatro sillas</p>
+      <span class="tag mono">Post · dos</span>
+    </article>
+    <article class="piece quote">
+      <div class="ornato-rule">
+        <span></span>
+        <img src="/logos/senales/grieta.svg" alt="" />
+        <span></span>
+      </div>
+      <p class="cap">La mesa, no el hall.</p>
+      <span class="tag mono">Separador</span>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="usos">
+  <p class="kicker mono">Usos</p>
+  <h2>La señal entra en el formato.</h2>
+  <p class="note">
+    Stories, destacadas, feed, valla, roller, banner, mail. El cubo firma.
+    El ornamento adorna. Si pelean, gana el cubo.
+  </p>
+
+  <h3>Stories · 9:16</h3>
+  <div class="wall stories">
+    <article class="piece story">
+      <img class="corte-overlay" src="/logos/senales/corte.svg" alt="" />
+      <img class="senal-hero" src="/logos/senales/brujula.svg" alt="" />
+      <p class="cap">
+        Traé el intento, no el pitch.
+        <em>office hours · 19h</em>
+      </p>
+      <span class="tag mono">Story · rumbo</span>
+    </article>
+    <article class="piece story photo">
+      <img class="bleed" src="/photos/byc-mesa-cuatro.jpg" alt="" />
+      <div class="chip">
+        <img src="/logos/byc.svg" alt="BYC" />
+      </div>
+      <img class="senal-mini story-mini" src="/logos/senales/mesa.svg" alt="" />
+      <p class="cap">La mesa ya empezó.</p>
+      <span class="tag mono">Story · foto + chip</span>
+    </article>
+    <article class="piece story sal">
+      <img class="corte-overlay" src="/logos/senales/corte.svg" alt="" />
+      <img class="senal-hero" src="/logos/senales/lista.svg" alt="" />
+      <p class="cap">
+        La mesa, no el hall.
+        <em>lista de espera</em>
+      </p>
+      <span class="tag mono">Story · lista</span>
+    </article>
+  </div>
+
+  <h3>Destacadas</h3>
+  <p class="note">Círculo de la red. Adentro, la señal. Nunca el cubo.</p>
+  <div class="destacadas-kit">
+    {
+      [
+        ["mesa", "Mesa"],
+        ["cuatro", "Batch"],
+        ["retry", "Retry"],
+        ["reloj", "19h"],
+        ["entrada", "Abierta"],
+        ["intento", "Intento"],
+        ["lista", "Lista"],
+        ["afuera", "Afuera"],
+      ].map(([id, label]) => (
+        <figure>
+          <span class="high-disc">
+            <img src={`/logos/senales/${id}.svg`} alt="" />
+          </span>
+          <figcaption class="mono">{label}</figcaption>
+        </figure>
+      ))
+    }
+  </div>
+
+  <h3>Feed · 1:1</h3>
+  <div class="wall">
+    <article class="piece quote">
+      <img class="senal-float" src="/logos/senales/intento.svg" alt="" />
+      <p class="cap">Traé el intento, no el pitch.</p>
+      <p class="mono" style="color: var(--grieta)">BYC</p>
+      <span class="tag mono">Post · intento</span>
+    </article>
+    <article class="piece feed">
+      <img class="bleed" src="/photos/byc-mesa-dos.jpg" alt="" />
+      <div class="chip">
+        <img src="/logos/byc.svg" alt="BYC" />
+      </div>
+      <p class="cap">Conversación, no networking.</p>
+      <span class="tag mono">Post · chip</span>
+    </article>
+    <article class="piece quote">
+      <img class="senal-float" src="/logos/senales/puente.svg" alt="" />
+      <p class="cap">Son pocos, pero ya salieron afuera.</p>
+      <p class="mono" style="color: var(--grieta)">Bolivia + diáspora</p>
+      <span class="tag mono">Post · puente</span>
+    </article>
+  </div>
+
+  <h3>Valla, roller, banner</h3>
+  <div class="wall wide">
+    <article class="piece valla">
+      <img class="corte-overlay tight" src="/logos/senales/esquina.svg" alt="" />
+      <img class="lock" src="/logos/byc-neg.svg" alt="BYC" />
+      <p>No te hacemos<br />dar vueltas.</p>
+      <span class="tag mono">Valla · esquina</span>
+    </article>
+    <article class="piece banner-lead">
+      <img class="lock" src="/logos/byc-neg.svg" alt="BYC" />
+      <img class="senal-mini invert" src="/logos/senales/entrada.svg" alt="" />
+      <p>Mesa abierta · 48h</p>
+      <span class="tag mono">Banner · web</span>
+    </article>
+  </div>
+
+  <div class="wall" style="margin-top: 1.1rem">
+    <article class="piece roller">
+      <img class="lock" src="/logos/byc.svg" alt="BYC" />
+      <img class="senal-mini" src="/logos/senales/entrada.svg" alt="" />
+      <p class="tagline-line">La mesa, no el hall.</p>
+      <p class="body-lines">Batch 01 · La Paz · once semanas</p>
+      <p class="foot-line mono">BY-COMBINATOR</p>
+      <span class="tag mono">Roller</span>
+    </article>
+    <article class="piece masthead">
+      <img class="lock" src="/logos/byc-neg.svg" alt="BYC" />
+      <img class="senal-mini invert" src="/logos/senales/timbre.svg" alt="" />
+      <p class="cap" style="font-size: 1.45rem">Traé el intento, no el pitch.</p>
+      <span class="tag mono">Mail · encabezado</span>
+    </article>
+    <article class="piece poster">
+      <img class="corte-overlay dark" src="/logos/senales/corte.svg" alt="" />
+      <p class="mono" style="color: var(--tinta)">Batch 01 · La Paz</p>
+      <img class="lock" src="/logos/byc.svg" alt="BYC" />
+      <h2>Cuatro founders.<br />Once semanas.<br />Sin equity.</h2>
+      <p class="foot-line mono">postulaciones abiertas</p>
+      <span class="tag mono">Afiche · corte</span>
+    </article>
   </div>
 </section>
 
@@ -307,6 +663,17 @@
         </p>
       </div>
       <p>No es juguete.</p>
+    </article>
+    <article>
+      <div class="stage">
+        <span class="x" aria-hidden="true">×</span>
+        <img
+          src="/logos/senales/brujula.svg"
+          alt=""
+          style="width: 2.6rem; filter: invert(1)"
+        />
+      </div>
+      <p>La señal no es el mark.</p>
     </article>
   </div>
 </section>

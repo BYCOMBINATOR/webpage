@@ -363,6 +363,178 @@
   height: 28px;
 }
 
+.chip {
+  position: absolute;
+  z-index: 2;
+  top: 8%;
+  left: 8%;
+  background: var(--sal);
+  padding: 0.45rem 0.55rem;
+}
+
+.chip img {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+
+.story.sal {
+  background: var(--sal);
+  color: var(--sombra);
+}
+
+.senal-hero {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38%;
+  z-index: 1;
+  filter: invert(1);
+}
+
+.corte-overlay {
+  position: absolute;
+  inset: 5%;
+  width: auto;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+  filter: invert(1);
+  opacity: 0.8;
+}
+
+.corte-overlay.tight {
+  inset: auto;
+  top: 14%;
+  left: 4%;
+  width: 2.2rem;
+  opacity: 0.9;
+}
+
+.corte-overlay.dark {
+  filter: none;
+  opacity: 0.55;
+}
+
+.story.sal .senal-hero,
+.story.sal .corte-overlay {
+  filter: none;
+}
+
+.story.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(16, 20, 28, 0.9) 0%,
+    rgba(16, 20, 28, 0.2) 46%,
+    transparent 68%
+  );
+}
+
+.story-mini {
+  position: absolute;
+  top: 8%;
+  right: 8%;
+  width: 1.55rem;
+  z-index: 2;
+  filter: invert(1);
+}
+
+.destacadas-kit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem 1.35rem;
+  margin: 1.1rem 0 2rem;
+  max-width: 56rem;
+}
+
+.destacadas-kit figure {
+  margin: 0;
+  width: 4rem;
+  text-align: center;
+}
+
+.destacadas-kit .high-disc {
+  width: 4rem;
+  height: 4rem;
+  outline: 1px solid var(--grieta);
+}
+
+.destacadas-kit figcaption {
+  margin-top: 0.35rem;
+  color: var(--grieta);
+}
+
+#usos h3 {
+  margin-top: 2.1rem;
+}
+
+.banner-lead {
+  aspect-ratio: 16 / 3.2;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0 1.3rem;
+}
+
+.banner-lead .lock {
+  height: 42%;
+  width: auto;
+}
+
+.banner-lead p {
+  margin-left: auto;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-size: clamp(1.05rem, 2.3vw, 1.65rem);
+}
+
+.senal-mini.invert {
+  filter: invert(1);
+}
+
+.roller {
+  aspect-ratio: 1 / 2.05;
+  background: var(--sal);
+  color: var(--sombra);
+  padding: 1.25rem 1.1rem 1.7rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 16rem;
+  justify-self: center;
+}
+
+.roller .lock {
+  height: 36px;
+  width: auto;
+  align-self: flex-start;
+}
+
+.roller .senal-mini {
+  margin-top: 1.15rem;
+}
+
+.roller .tagline-line {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-size: 1.35rem;
+  margin-top: 1rem;
+}
+
+.roller .body-lines {
+  color: var(--tinta);
+  margin-top: 0.55rem;
+}
+
+.roller .foot-line {
+  margin-top: auto;
+  color: var(--tinta);
+}
+
 .valla {
   aspect-ratio: 16 / 5;
   display: flex;
@@ -441,6 +613,7 @@
   display: grid;
   align-content: center;
   gap: 0.9rem;
+  outline: 1px solid var(--hairline);
 }
 
 .masthead .lock {
@@ -717,6 +890,261 @@
   z-index: 2;
 }
 
+.line-lock {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-size: 1.15rem;
+  line-height: 1.15;
+  margin: 0.35rem 0 0.45rem;
+}
+
+.senal-grid {
+  list-style: none;
+  padding: 0;
+  margin: 1.3rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 56rem;
+}
+
+.senal-grid li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.senal-grid strong {
+  font-size: 0.95rem;
+  letter-spacing: -0.03em;
+}
+
+.senal-grid .mono {
+  color: var(--grieta);
+}
+
+.senal-tile {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  background: var(--sal);
+  color: var(--sombra);
+}
+
+.senal-tile img {
+  width: 52%;
+  height: auto;
+}
+
+.senal-float {
+  width: 2.15rem;
+  height: 2.15rem;
+  filter: invert(1);
+  align-self: flex-start;
+}
+
+.senal-mini {
+  width: 1.55rem;
+  height: auto;
+}
+
+.carta,
+.acta {
+  background: var(--sal);
+  color: var(--sombra);
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.carta {
+  aspect-ratio: 1 / 1.28;
+}
+
+.carta header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.carta .lock {
+  height: 36px;
+  width: auto;
+}
+
+.carta .tagline-line {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-size: 1.15rem;
+  margin-top: 1.2rem;
+}
+
+.carta .body-lines {
+  color: var(--tinta);
+  margin-top: 0.7rem;
+  font-size: 0.92rem;
+}
+
+.carta .foot-line {
+  margin-top: auto;
+  color: var(--tinta);
+}
+
+.acta {
+  aspect-ratio: 4 / 5;
+  min-height: 12rem;
+}
+
+.acta h2 {
+  margin-top: 0.5rem;
+}
+
+.acta .senal-mini {
+  margin-bottom: 0.8rem;
+}
+
+.patron-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+  max-width: 56rem;
+  margin-top: 1rem;
+}
+
+.patron-row figure {
+  margin: 0;
+}
+
+.patron-row figcaption {
+  margin-top: 0.45rem;
+  color: var(--grieta);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.patron-swatch {
+  aspect-ratio: 5 / 3;
+  background-color: var(--sal);
+  background-size: 40px 40px;
+  background-repeat: repeat;
+}
+
+.carta.ornato {
+  background-color: var(--sal);
+  background-image: url("/logos/senales/patron-mesa.svg");
+  background-size: 128px 128px;
+}
+
+.sobre-mock {
+  aspect-ratio: 16 / 10;
+  background-color: var(--sal);
+  background-image: url("/logos/senales/patron-cruz.svg");
+  background-size: 72px 72px;
+  color: var(--sombra);
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sobre-mock .lock {
+  height: 28px;
+  width: auto;
+  align-self: flex-start;
+}
+
+.sobre-mock .senal-mini {
+  align-self: flex-end;
+}
+
+.sobre-mock .addr {
+  color: var(--tinta);
+  margin: 0;
+}
+
+.sobre-mock .tagline-line {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.piece:has(.high-row) {
+  padding: 1.2rem 1.2rem 2.2rem;
+}
+
+.high-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.1rem;
+  justify-content: center;
+}
+
+.high-row figure {
+  margin: 0;
+  width: 3.6rem;
+  text-align: center;
+}
+
+.high-disc {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  background: var(--sal);
+  display: grid;
+  place-items: center;
+}
+
+.high-disc img {
+  width: 48%;
+}
+
+.high-row figcaption {
+  margin-top: 0.3rem;
+  color: var(--grieta);
+}
+
+.sticker-sheet-senal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem 1.2rem 2.2rem;
+  min-height: 10rem;
+}
+
+.sticker-sheet-senal .mini {
+  background: var(--sal);
+  padding: 0.45rem;
+}
+
+.sticker-sheet-senal .mini img {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+
+.ornato-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  margin-bottom: 0.4rem;
+}
+
+.ornato-rule span {
+  flex: 1;
+  height: 1px;
+  background: var(--hairline);
+}
+
+.ornato-rule img {
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: invert(1);
+}
+
 .tabs {
   display: flex;
   gap: 0;
@@ -752,6 +1180,10 @@
 
 .merch-stage .cert {
   width: min(100%, 16rem);
+}
+
+.merch-stage .sobre-mock {
+  width: min(100%, 18rem);
 }
 
 .merch-stage .badge {
@@ -803,6 +1235,10 @@
 
 .merch-stage.tall {
   min-height: 20rem;
+}
+
+.merch-stage .roller {
+  max-width: 9.6rem;
 }
 
 .merch-stage.sheet {
@@ -877,6 +1313,11 @@
 
 .sticker-sheet .mini.pill img {
   height: 28px;
+}
+
+.sticker-sheet.senales .mini img {
+  height: 36px;
+  width: 36px;
 }
 
 .pin {
@@ -1145,20 +1586,21 @@
 
 .ig-high {
   display: flex;
-  gap: 0.85rem;
-  padding: 0.4rem 0.85rem 0.9rem;
+  gap: 0.55rem;
+  padding: 0.4rem 0.7rem 0.9rem;
 }
 
 .ig-high figure {
   margin: 0;
-  width: 3.6rem;
+  width: 3.2rem;
   text-align: center;
 }
 
 .ig-high img,
-.ig-high .high-type {
-  width: 3.6rem;
-  height: 3.6rem;
+.ig-high .high-type,
+.ig-high .high-ring {
+  width: 3.2rem;
+  height: 3.2rem;
   border-radius: 50%;
   object-fit: cover;
   outline: 1px solid #dbdbdb;
@@ -1172,6 +1614,18 @@
   font-weight: 800;
   letter-spacing: -0.05em;
   font-size: 1.05rem;
+}
+
+.ig-high .high-ring {
+  background: var(--sal);
+}
+
+.ig-high .high-ring img {
+  width: 48%;
+  height: auto;
+  border-radius: 0;
+  outline: none;
+  object-fit: contain;
 }
 
 .ig-high figcaption {
@@ -1490,11 +1944,19 @@
     grid-template-columns: 1fr;
   }
 
+  .senal-grid,
+  .patron-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .story,
   .retry,
   .badge,
   .cert,
-  .poster {
+  .poster,
+  .carta,
+  .acta,
+  .roller {
     max-width: 22rem;
   }
 

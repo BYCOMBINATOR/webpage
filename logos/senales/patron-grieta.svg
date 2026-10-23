@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <rect width="80" height="80" fill="#F3F0E8"/>
+  <g fill="none" stroke="#10141C" stroke-opacity="0.22" stroke-width="2" stroke-linejoin="miter" stroke-linecap="square">
+    <path d="M12 4 L20 18 L8 32 L22 46"/>
+    <path d="M8 32 L2 38"/>
+    <path d="M52 38 L60 52 L48 66 L58 78"/>
+    <path d="M60 52 L70 48"/>
+  </g>
+</svg>

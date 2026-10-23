@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none" stroke="#10141C" stroke-width="2.2" stroke-linejoin="miter" stroke-linecap="square" role="img" aria-labelledby="title">
+  <title id="title">Reloj</title>
+  <rect x="16" y="16" width="48" height="48"/>
+  <path d="M40 40V26"/>
+  <path d="M40 40L31 51"/>
+</svg>
