@@ -1,0 +1,74 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+
+<form class="form" id="waitlist" method="POST" action="/api/waitlist">
+  <p class="hp" aria-hidden="true">
+    <label>Company <input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+  </p>
+  <label>
+    Mail
+    <input type="email" name="email" required placeholder="vos@startup.com" autocomplete="email" />
+  </label>
+  {
+    compact ? null : (
+      <label>
+        Nombre
+        <input type="text" name="name" placeholder="Opcional" autocomplete="name" />
+      </label>
+    )
+  }
+  <label>
+    Qué sos
+    <select name="rol">
+      <option value="founder">Founder</option>
+      <option value="guia">Guía / mentor</option>
+      <option value="otro">Otra cosa</option>
+    </select>
+  </label>
+  <button class="cut" type="submit">Avisame cuando abra la mesa</button>
+  <p class="form-msg" data-msg></p>
+</form>
+
+<script>
+  const form = document.getElementById("waitlist");
+  const msg = form?.querySelector("[data-msg]");
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!(form instanceof HTMLFormElement)) return;
+    const body = new FormData(form);
+    const button = form.querySelector("button");
+    if (button) button.setAttribute("disabled", "true");
+    if (msg) msg.textContent = "";
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        body,
+        headers: { Accept: "application/json" },
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (msg) {
+          msg.classList.remove("ok");
+          msg.textContent = data.message || "No se pudo anotar. Probá de nuevo.";
+        }
+        return;
+      }
+      form.reset();
+      if (msg) {
+        msg.classList.add("ok");
+        msg.textContent = data.message || "Ya estás en la lista.";
+      }
+    } catch {
+      if (msg) {
+        msg.classList.remove("ok");
+        msg.textContent = "No se pudo anotar. Probá de nuevo.";
+      }
+    } finally {
+      if (button) button.removeAttribute("disabled");
+    }
+  });
+</script>

@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Una nueva comunidad se acerca." } = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/logos/byc-b-sello-sombra.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+  </head>
+  <body>
+    <header class="bar">
+      <a href="/"
+        ><img class="bar-mark" src="/logos/byc-neg.svg" alt="BYC" /></a
+      >
+      <nav class="mono">
+        <a href="/" aria-current={path === "/" ? "page" : undefined}>Lista</a>
+        <a
+          href="/comunica/"
+          aria-current={path.startsWith("/comunica") ? "page" : undefined}
+          >Comunicación</a
+        >
+      </nav>
+    </header>
+    <slot />
+    <footer class="foot mono">
+      <span>BYC · BY-COMBINATOR</span>
+      <a href="/comunica/#marca">Cómo se usa la marca</a>
+    </footer>
+  </body>
+</html>

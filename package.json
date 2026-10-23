@@ -1,0 +1,33 @@
+{
+  "name": "webpage",
+  "version": "1.0.0",
+  "description": "Todo sobre BY-Combinator",
+  "scripts": {
+    "logos": "node scripts/build-mark.mjs",
+    "dev": "node scripts/link-public.mjs && astro dev --port 4173",
+    "start": "node scripts/link-public.mjs && astro dev --port 4173",
+    "build": "astro build",
+    "preview": "astro preview --port 4173"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BYCOMBINATOR/webpage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/BYCOMBINATOR/webpage/issues"
+  },
+  "homepage": "https://github.com/BYCOMBINATOR/webpage#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "opentype.js": "^2.0.0",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@astrojs/node": "^11.1.9",
+    "astro": "^7.4.2"
+  }
+}
